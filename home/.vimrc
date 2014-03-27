@@ -1,5 +1,7 @@
 set nocompatible               " be iMproved
-filetype off                   " required!
+filetype on                   " required!
+filetype plugin indent on
+syntax on
 
 set shell=/bin/bash
 
@@ -26,9 +28,15 @@ Bundle 'othree/html5.vim'
 Bundle 'guns/vim-clojure-static'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
+"Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'tpope/vim-cucumber'
+Bundle 'jQuery'
+Bundle 'ack.vim'
+Bundle 'https://github.com/jgdavey/vim-railscasts.git'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'vim-scripts/JSON.vim'
 
-filetype plugin indent on
-syntax on
 
 set shortmess=I
 
@@ -115,7 +123,7 @@ set cursorline!
 " whitespace
 set nolist listchars=tab:·\ ,eol:¶,trail:·,extends:»,precedes:«
 nmap <silent> <leader>s :set nolist!<CR>
-nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
+"nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
 
 " command-t settings
 let g:CommandTMaxHeight=20
@@ -137,6 +145,11 @@ if has("autocmd")
 
   " ruby. why.
   au BufNewFile,BufRead Vagrantfile,Podfile set filetype=ruby
+
+  " Coffeescript
+  au BufRead,BufNewFile *.coffee set ft=coffee syntax=coffee
+  " handlebars
+  au BufNewFile,BufRead *.handlebars.* set filetype=handlebars
 
   au BufNewFile,BufRead *.ejs set filetype=eruby
 
@@ -162,3 +175,4 @@ let g:dash_map = {
   \ 'ruby'       : 'rails',
   \ 'javascript' : 'ember'
   \ }
+
